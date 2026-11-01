@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bayrem | Web Developer</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+/* ---------- THEME VARIABLES ---------- */
+
+:root{
+--bg:#0f172a;
+--card:#111827;
+--text:#e5e7eb;
+--accent:#6366f1;
+--accent2:#818cf8;
+--nav:rgba(15,23,42,.6);
+--border:rgba(255,255,255,.08);
+--shadow:rgba(0,0,0,.4);
+}
+
+body.light{
+--bg:#f8fafc;
+--card:#ffffff;
+--text:#0f172a;
+--accent:#4f46e5;
+--accent2:#6366f1;
+--nav:rgba(255,255,255,.7);
+--border:rgba(0,0,0,.06);
+--shadow:rgba(0,0,0,.1);
+}
+
+/* ---------- BASE ---------- */
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+font-family:"Manrope",sans-serif;
+background:var(--bg);
+color:var(--text);
+line-height:1.6;
+overflow-x:hidden;
+transition:.4s;
+}
+
+.container{
+width:90%;
+max-width:1100px;
+margin:auto;
+}
+
+section{
+padding:120px 0;
+}
+
+/* ---------- NAVBAR ---------- */
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+background:var(--nav);
+backdrop-filter:blur(12px);
+border-bottom:1px solid var(--border);
+z-index:999;
+transition:.3s;
+}
+
+nav.scrolled{
+box-shadow:0 10px 40px var(--shadow);
+}
+
+nav .container{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 0;
+}
+
+nav a{
+text-decoration:none;
+color:var(--text);
+margin-left:25px;
+font-weight:600;
+font-size:.9rem;
+}
+
+nav a:hover{color:var(--accent);}
+
+.theme-btn{
+margin-left:20px;
+background:var(--accent);
+color:white;
+border:none;
+padding:8px 16px;
+border-radius:999px;
+cursor:pointer;
+font-weight:600;
+}
+
+/* ---------- HERO ---------- */
+
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+position:relative;
+overflow:hidden;
+}
+
+.hero::before{
+content:"";
+position:absolute;
+width:500px;
+height:500px;
+background:radial-gradient(circle,var(--accent),transparent 70%);
+filter:blur(120px);
+top:-150px;
+left:-150px;
+animation:blob1 10s infinite alternate;
+}
+
+.hero::after{
+content:"";
+position:absolute;
+width:500px;
+height:500px;
+background:radial-gradient(circle,var(--accent2),transparent 70%);
+filter:blur(120px);
+bottom:-150px;
+right:-150px;
+animation:blob2 12s infinite alternate;
+}
+
+body.light .hero::before{
+background:radial-gradient(circle,#c7d2fe,transparent 70%);
+}
+
+body.light .hero::after{
+background:radial-gradient(circle,#a5b4fc,transparent 70%);
+}
+
+@keyframes blob1{
+from{transform:translate(0,0);}
+to{transform:translate(100px,80px);}
+}
+
+@keyframes blob2{
+from{transform:translate(0,0);}
+to{transform:translate(-80px,-100px);}
+}
+
+h1{
+font-size:clamp(2.5rem,6vw,4rem);
+}
+
+.hero span{color:var(--accent);}
+
+.hero p{
+margin:25px 0;
+max-width:600px;
+}
+
+.btn{
+background:var(--accent);
+padding:12px 28px;
+border-radius:999px;
+color:white;
+text-decoration:none;
+font-weight:600;
+display:inline-block;
+cursor: pointer;
+border: none;
+}
+
+.btn:hover{background:var(--accent2);}
+
+/* ---------- ABOUT ---------- */
+
+.about img{
+width:280px;
+border-radius:20px;
+margin-top:40px;
+animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0)}
+50%{transform:translateY(-15px)}
+100%{transform:translateY(0)}
+}
+
+/* ---------- CARDS ---------- */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:30px;
+}
+
+.card{
+background:var(--card);
+border:1px solid var(--border);
+padding:35px;
+border-radius:18px;
+transition:.4s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 20px 60px var(--shadow);
+}
+
+/* ---------- SKILLS ---------- */
+
+.skill{margin-bottom:25px;}
+
+.skill-bar{
+height:10px;
+background:#1f2937;
+border-radius:999px;
+overflow:hidden;
+margin-top:8px;
+}
+
+body.light .skill-bar{
+background:#e2e8f0;
+}
+
+.skill-fill{
+height:100%;
+width:0;
+background:linear-gradient(90deg,var(--accent),var(--accent2));
+transition:1.2s;
+}
+
+/* ---------- PROJECT ---------- */
+
+.project {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.project img{
+width:100%;
+height: 200px;
+object-fit: cover;
+border-radius: 12px;
+margin-bottom: 20px;
+transition: .6s;
+}
+
+.project:hover img{
+transform:scale(1.05);
+}
+
+/* ---------- CONTACT ---------- */
+
+#contact{text-align:center}
+
+.social{
+margin:10px;
+display:inline-block;
+padding:12px 28px;
+border-radius:999px;
+background:var(--accent);
+color:white;
+text-decoration:none;
+}
+
+.social:hover{background:var(--accent2);}
+
+/* ---------- FOOTER ---------- */
+
+footer{
+padding:40px;
+text-align:center;
+border-top:1px solid var(--border);
+}
+
+/* ---------- REVEAL ---------- */
+
+.reveal{
+opacity:0;
+transform:translateY(60px);
+transition:1s;
+}
+
+.reveal.active{
+opacity:1;
+transform:translateY(0);
+}
+
+/* ---------- CURSOR LIGHT ---------- */
+
+.cursor{
+position:fixed;
+width:350px;
+height:350px;
+background:radial-gradient(circle,rgba(99,102,241,.15),transparent 70%);
+pointer-events:none;
+transform:translate(-50%,-50%);
+z-index:-1;
+}
+
+body.light .cursor{
+background:radial-gradient(circle,rgba(99,102,241,.25),transparent 70%);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="cursor"></div>
+
+<nav>
+<div class="container">
+<strong>Bayrem</strong>
+<div>
+<a href="#about">About</a>
+<a href="#services">Services</a>
+<a href="#projects">Projects</a>
+<button class="theme-btn" onclick="toggleTheme()">Theme</button>
+</div>
+</div>
+</nav>
+
+<section class="hero">
+<div class="container">
+<h1>Hi, I'm <span id="typing"></span></h1>
+<p>Web developer focused on modern design, performance and elegant user experiences.</p>
+<a class="btn" href="#projects">View Projects</a>
+</div>
+</section>
+
+<section id="about" class="reveal">
+<div class="container about">
+<h2>About Me</h2>
+<p>I build fast modern websites with clean UI, strong performance and scalable architecture.</p>
+<p>
+Email: bayremdigital@gmail.com<br>
+Phone: +216 27221779
+</p>
+<img src="bayrem.jpeg" alt="Bayrem">
+</div>
+</section>
+
+<section id="services" class="reveal">
+<div class="container">
+<h2>Services</h2>
+<div class="grid">
+<div class="card"><h3>Web Development</h3><p>Modern scalable websites and applications.</p></div>
+<div class="card"><h3>UI / UX Design</h3><p>Minimal and intuitive user interface systems.</p></div>
+<div class="card"><h3>Landing Pages</h3><p>High converting and performance optimized pages.</p></div>
+<div class="card"><h3>Portfolio Websites</h3><p>Premium personal brand portfolio websites.</p></div>
+</div>
+</div>
+</section>
+
+<section id="skills" class="reveal">
+<div class="container">
+<h2>Skills</h2>
+<div class="skill">HTML<div class="skill-bar"><div class="skill-fill" data-skill="95%"></div></div></div>
+<div class="skill">CSS<div class="skill-bar"><div class="skill-fill" data-skill="90%"></div></div></div>
+<div class="skill">JavaScript<div class="skill-bar"><div class="skill-fill" data-skill="85%"></div></div></div>
+<div class="skill">React<div class="skill-bar"><div class="skill-fill" data-skill="80%"></div></div></div>
+</div>
+</section>
+
+<section id="projects" class="reveal">
+<div class="container">
+<h2>Projects</h2>
+<div class="grid">
+
+<div class="card project">
+<img src="oumaimadou.png" alt="Oumaima Project">
+<div style="margin-bottom: 20px;">
+    <h3>Architect Portfolio</h3>
+
+</div>
+<a class="btn" href="https://bayremrajhidigital.github.io/Oumaimadh-architecte/" target="_blank">View Project</a>
+</div>
+
+<div class="card project">
+<img src="Foot.png" alt="FootPro Project"> <div style="margin-bottom: 20px;">
+    <h3>FootPro</h3>
+</div>
+<a class="btn" href="https://bayremrajhidigital.github.io/Footpro/" target="_blank">View Project</a>
+</div>
+
+</div>
+</div>
+</section>
+
+<section id="contact" class="reveal">
+<h2>Connect</h2>
+<a class="social" href="https://instagram.com">Instagram</a>
+<a class="social" href="https://facebook.com">Facebook</a>
+</section>
+
+<footer>
+© 2026 Bayrem — All rights reserved
+</footer>
+
+<script>
+/* typing animation */
+const text="Bayrem";
+let i=0;
+function typing(){
+if(i<text.length){
+document.getElementById("typing").innerHTML+=text.charAt(i);
+i++;
+setTimeout(typing,120);
+}
+}
+typing();
+
+/* reveal animation */
+const reveals=document.querySelectorAll(".reveal");
+window.addEventListener("scroll",()=>{
+reveals.forEach(section=>{
+const top=section.getBoundingClientRect().top;
+if(top<window.innerHeight-100){
+section.classList.add("active");
+}
+});
+});
+
+/* skills animation */
+const skills=document.querySelectorAll(".skill-fill");
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.style.width=entry.target.dataset.skill;
+}
+});
+});
+skills.forEach(skill=>observer.observe(skill));
+
+/* navbar scroll */
+window.addEventListener("scroll",()=>{
+const nav=document.querySelector("nav");
+if(window.scrollY>50){
+nav.classList.add("scrolled");
+}else{
+nav.classList.remove("scrolled");
+}
+});
+
+/* cursor glow */
+const cursor=document.querySelector(".cursor");
+document.addEventListener("mousemove",(e)=>{
+cursor.style.left=e.clientX+"px";
+cursor.style.top=e.clientY+"px";
+});
+
+/* theme toggle */
+function toggleTheme(){
+document.body.classList.toggle("light");
+if(document.body.classList.contains("light")){
+localStorage.setItem("theme","light");
+}else{
+localStorage.setItem("theme","dark");
+}
+}
+if(localStorage.getItem("theme")==="light"){
+document.body.classList.add("light");
+}
+</script>
+
+</body>
+</html>
